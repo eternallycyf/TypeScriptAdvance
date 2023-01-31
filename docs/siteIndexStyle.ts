@@ -147,8 +147,9 @@ html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previe
   background-color: #49b1f5;
 }
 
-..dumi-default-doc-layout > main {
-  margin-top: 2000px !important;
+.dumi-default-hero-actions {
+  position: 'relative',
+  zIndex: 999,
 }
 `;
 
