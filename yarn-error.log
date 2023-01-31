@@ -1,0 +1,65 @@
+Arguments: 
+  /Users/eternallycyf/.nvm/versions/node/v18.13.0/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /Users/eternallycyf/Library/pnpm:/home/eternallycyf/jdk1.7.0_03/bin:/usr/local/opt/mysql@5.6/bin:/usr/local/opt/redis@4.0/bin:/Users/eternallycyf/.nvm/versions/node/v18.13.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Library/Apple/usr/bin:/Users/eternallycyf/Library/Android/sdk/emulator:/Users/eternallycyf/Library/Android/sdk/tools:/Users/eternallycyf/Library/Android/sdk/tools/bin:/Users/eternallycyf/Library/Android/sdk/platform-tools:/usr/local/Cellar/mysql/8.0.27/bin/:/usr/local/mongodb/bin/:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/usr/local/bin:/Applications/Android Studio.app/Contents/gradle/gradle-5.6.4/bin
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  18.13.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/eternallycyf/Documents/GitHub/case/开源/TypeScriptAdvance/package.json: Unexpected token } in JSON at position 332
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "TypeScriptAdvance",
+    "version": "0.0.1",
+    "description": "TypeScriptAdvance",
+    "scripts": {
+      "start": "npm run dev",
+      "dev": "dumi dev",
+      "build": "dumi build",
+      "docs:deploy": "gh-pages -d docs-dist",
+      "deploy": "npm run build && npm run docs:deploy",
+      "prepare": "husky install && dumi setup",
+    },
+    "license": "MIT",
+    "commitlint": {
+      "extends": [
+        "@commitlint/config-conventional"
+      ]
+    },
+    "lint-staged": {
+      "*.{md,json}": [
+        "prettier --write --no-error-on-unmatched-pattern"
+      ]
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^17.1.2",
+      "@commitlint/config-conventional": "^17.1.0",
+      "babel-plugin-import": "^1.13.6",
+      "dumi": "^2.0.0-rc.0",
+      "husky": "^8.0.1",
+      "lint-staged": "^13.0.3",
+      "typescript": "^4.9.3",
+      "gh-pages": "^4.0.0",
+      "prettier": "^2.7.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
