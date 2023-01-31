@@ -36,12 +36,8 @@ export default defineConfig({
         link: '/guide',
       },
       {
-        title: '基础',
-        link: '/base',
-      },
-      {
         title: '高级类型',
-        link: '/high/moduleMatch ',
+        link: '/high/module-match',
       },
       {
         title: 'react',

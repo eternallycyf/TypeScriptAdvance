@@ -146,6 +146,10 @@ html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previe
   color: #fff;
   background-color: #49b1f5;
 }
+
+..dumi-default-doc-layout > main {
+  margin-top: 2000px !important;
+}
 `;
 
 export default style;
