@@ -41,7 +41,7 @@ export default defineConfig({
       },
       {
         title: 'GitHub',
-        link: 'https://github.com/eternallycyf/lordaeron',
+        link: `https://github.com/eternallycyf/${repo}`,
       },
     ],
   },
