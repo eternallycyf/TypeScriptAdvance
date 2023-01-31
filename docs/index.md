@@ -5,7 +5,7 @@ hero:
   description: 深入浅出 TypeScript
   actions:
     - text: Start
-      link: /guide
+      link: /high
     - text: guide
       link: /guide
 ---

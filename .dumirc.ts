@@ -22,7 +22,7 @@ export default defineConfig({
     { id: 'zh-CN', name: '中文', suffix: 'zh-CN' },
   ],
   themeConfig: {
-    name: 'lordaeron',
+    name: 'TypeScriptAdvance',
     carrier: 'dumi',
     hd: true,
     logo:
@@ -34,6 +34,22 @@ export default defineConfig({
       {
         title: '指南',
         link: '/guide',
+      },
+      {
+        title: '基础',
+        link: '/base',
+      },
+      {
+        title: '高级类型',
+        link: '/high/moduleMatch ',
+      },
+      {
+        title: 'react',
+        link: '/react',
+      },
+      {
+        title: 'tschallenge',
+        link: '/tschallenge',
       },
       {
         title: '相关链接',
