@@ -7,60 +7,63 @@ group:
   order: 7
 ---
 
-## GetValueType
+## MyAwaited
 
 ```ts
-// Promise:
-type GetValueType<P> = P extends Promise<infer Value> ? Value : never;
-
-type GetValueResult = GetValueType<Promise<'guang'>>;
-```
-
-## GetFirst
-
-```ts
-type GetFirst<Arr extends unknown[]> = Arr extends [infer First, ...unknown[]]
-  ? First
+type MyAwaited<T extends PromiseLike<any>> = T extends PromiseLike<infer R>
+  ? R extends PromiseLike<any>
+    ? MyAwaited<R>
+    : R
   : never;
 
-type GetFirstResult = GetFirst<[1, 2, 3]>;
-type GetFirstResult2 = GetFirst<[]>;
+type ExampleType<T = string> = Promise<T>;
+
+type Result = MyAwaited<ExampleType<ExampleType>>; // string
 ```
 
-## GetLast
+## GetMiddle
 
 ```ts
-type GetLast<Arr extends unknown[]> = Arr extends [...unknown[], infer Last]
-  ? Last
+type GetMiddle<T extends unknown[]> = T extends [
+  infer First,
+  ...infer middle,
+  infer Last,
+]
+  ? middle
   : never;
-type GetLastResult = GetLast<[1, 2, 3]>;
-type GetLastResult2 = GetLast<[]>;
+
+type Test = GetMiddle<[1, 2, 3, 4]>; // 2 3
 ```
 
-## PopArr
+## 数组方法
 
 ```ts
-type PopArr<Arr extends unknown[]> = Arr extends []
+type Pop<T extends unknown[]> = T extends []
   ? []
-  : Arr extends [...infer Rest, unknown]
+  : T extends [...infer Rest, unknown]
   ? Rest
   : never;
 
-type PopResult = PopArr<[1, 2, 3]>;
-type PopResult2 = PopArr<[]>;
-```
+type TestPop = Pop<[1, 2]>; // 1,2
 
-## ShiftArr
-
-```ts
-type ShiftArr<Arr extends unknown[]> = Arr extends []
+type Shift<T extends unknown[]> = T extends []
   ? []
-  : Arr extends [unknown, ...infer Rest]
+  : T extends [infer First, ...infer Rest]
   ? Rest
   : never;
 
-type ShiftResult = ShiftArr<[1, 2, 3]>;
-type ShiftResult2 = ShiftArr<[]>;
+type TestShift = Shift<[1, 2, 3]>; // 2,3
+```
+
+## 字符串方法
+
+```ts
+type StartsWith<
+  Str extends string,
+  Prefix extends string,
+> = Str extends `${Prefix}${string}` ? Prefix : false;
+
+type TestStartsWith = StartsWith<'guang and dong', 'guang'>;
 ```
 
 ## StartsWith
