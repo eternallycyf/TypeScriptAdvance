@@ -64,32 +64,14 @@ type StartsWith<
 > = Str extends `${Prefix}${string}` ? Prefix : false;
 
 type TestStartsWith = StartsWith<'guang and dong', 'guang'>;
-```
 
-## StartsWith
-
-```ts
-// StartsWith:
-type StartsWith<
-  Str extends string,
-  Prefix extends string,
-> = Str extends `${Prefix}${string}` ? true : false;
-
-type StartsWithResult = StartsWith<'guang and dong', 'guang'>;
-type StartsWithResult2 = StartsWith<'guang and dong', 'dong'>;
-```
-
-## ReplaceStr
-
-```ts
 type ReplaceStr<
   Str extends string,
-  From extends string,
-  To extends string,
-> = Str extends `${infer Prefix}${From}${infer Suffix}`
-  ? `${Prefix}${To}${Suffix}`
+  Form extends string,
+  to extends string,
+> = Str extends `${infer Prefix}${Form}${infer suffix}`
+  ? `${Prefix}${to}${suffix}`
   : Str;
-
 type ReplaceResult = ReplaceStr<
   "Guangguang's best friend is ?",
   '?',
@@ -124,6 +106,8 @@ type TrimStr<Str extends string> = TrimStrRight<TrimStrLeft<Str>>;
 type TrimResult = TrimStr<'      dong   '>;
 ```
 
+## 函数
+
 ## GetParameters
 
 ```ts
@@ -153,8 +137,9 @@ type ReturnTypeResullt = GetReturnType<(name: string) => 'dong'>;
 
 ## GetThisParameterType
 
+- "strictBindCallApply": true,
+
 ```ts
-// GetThisParameterType
 class Dong {
   name: string;
 
@@ -162,6 +147,9 @@ class Dong {
     this.name = 'dong';
   }
 
+  song() {
+    return 'song';
+  }
   hello(this: Dong) {
     return "hello, I'm " + this.name;
   }
@@ -179,29 +167,20 @@ type GetThisParameterType<T> = T extends (
   ? ThisType
   : unknown;
 
-type GetThisParameterTypeRes = GetThisParameterType<typeof dong.hello>;
+type GetThisParameterTypeRes = GetThisParameterType<typeof dong.song>;
 ```
 
 ## GetInstanceType
 
 ```ts
-// 构造器：
+type Person = new (name: string) => { name: string };
 
-// GetInstanceType
-type GetInstanceType<ConstructorType extends new (...args: any) => any> =
-  ConstructorType extends new (...args: any) => infer InstanceType
+type GetInstanceType<ConstructorType extends new (...arg: any) => any> =
+  ConstructorType extends new (...args: infer Args) => infer InstanceType
     ? InstanceType
     : any;
 
-interface Person {
-  name: string;
-}
-
-interface PersonConstructor {
-  new (name: string): Person;
-}
-
-type GetInstanceTypeRes = GetInstanceType<PersonConstructor>;
+type test = GetInstanceType<Person>;
 ```
 
 ## GetConstructorParameters

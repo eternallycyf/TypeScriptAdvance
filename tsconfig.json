@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "declaration": true,
     "experimentalDecorators": true,
+    "strictBindCallApply": true,
     "paths": {
       // @ 已被src占用
       "@@/*": [".dumi/tmp/*"],

@@ -33,3 +33,22 @@ type MapType<T> = {
 };
 type text = MapType<Obj>;
 ```
+
+## length
+
+```ts
+// 只有元组的长度是具体的数字
+'abc'['length']  是number类型
+[1,2,3]['length'] 是具体的某个值
+```
+
+## ts 类型显示问题
+
+- ts 的类型只有被用到的时候才会做计算
+
+```ts
+// 触发计算
+
+Obj extends any ? xxx : never;
+Obj extends never ? xxx :never;
+```
