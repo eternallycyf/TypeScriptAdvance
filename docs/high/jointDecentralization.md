@@ -39,7 +39,7 @@ type CamelcaseUnion<Item extends string> =
 - 非联合类型 [A] extends [B] 是相同的
 - 当作用于联合类型比较 使用 [] 就会分发
 
-```tsx
+```ts
 [C] extends [T] ? false : true;
 // 如果是string
 [T] = [string][C] = [string];
@@ -52,7 +52,7 @@ type CamelcaseUnion<Item extends string> =
 - 会把每个元素单独传入做计算，而右边不会
 - 需要泛型
 
-```tsx
+```ts
 type IsUnion<A, B = A> = A extends A ? ([B] extends [A] ? false : true) : never;
 ```
 
