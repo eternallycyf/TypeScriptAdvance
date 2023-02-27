@@ -52,3 +52,72 @@ type text = MapType<Obj>;
 Obj extends any ? xxx : never;
 Obj extends never ? xxx :never;
 ```
+
+## infer
+
+```ts
+type TestLast<Arr extends string[]> = Arr extends [...infer Rest, infer Last]
+  ? `最后一个是：${Last & string}`
+  : never;
+
+type TestLast2<Arr extends string[]> = Arr extends [...infer Rest, infer Last]
+  ? Last extends string
+    ? `最后一个是：${Last}`
+    : never
+  : never;
+
+type TestLast3<Arr extends string[]> = Arr extends [
+  ...infer Rest,
+  infer Last extends string,
+]
+  ? `最后一个是：${Last}`
+  : never;
+```
+
+## 协变 逆变
+
+- 子类型可以赋值给父类型，叫做协变（covariant）
+- 父类型可以赋值给子类型，叫做逆变（contravariant）。
+
+```ts
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface Guang {
+  name: string;
+  age: number;
+  hobbies: string[];
+}
+
+let person: Person = {
+  name: '',
+  age: 20,
+};
+let guang: Guang = {
+  name: 'guang',
+  age: 20,
+  hobbies: ['play game', 'writing'],
+};
+
+person = guang;
+```
+
+## satisfies
+
+```ts
+type Obj = {
+  a: number;
+  b: string;
+  [key: string]: any;
+};
+
+const obj = {
+  a: 1,
+  b: 'bbb',
+  cc: 3,
+  dd: 4,
+  x: '2',
+} satisfies Obj;
+```
