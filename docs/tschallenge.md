@@ -67,3 +67,26 @@ type ParseQueryString<Str extends string> =
 
 type ParseQueryStringResult = ParseQueryString<'a=1&a=2&b=2&c=3'>;
 ```
+
+## &
+
+- { readonly a: string } & { a: string } => { a: string }
+- type never = number & string
+- 相同类型合并
+- 不同类型舍弃
+
+## isObject
+
+```ts
+type xxx<T> = {
+  [K in keyof T]: keyof T[P] extends never ? true : false;
+};
+```
+
+## 可变的元组
+
+```ts
+declare function PromiseAll<T extends unknown[]>(
+  values: readonly [...T],
+): Promise<{ [K in keyof T]: Awaited<T[K]> }>;
+```
